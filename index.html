@@ -1433,12 +1433,59 @@
       .nav-links { display: none; }
       .expiry-row { grid-template-columns: 1fr 1fr; }
       .expiry-issuer { display: none; }
+      .promo-grid { grid-template-columns: 1fr; }
+      .why-barkey-items { flex-wrap: wrap; }
+      .wb-sep { display: none; }
+      /* Reduce section gaps on tablet */
+      .section-header { margin-bottom: 44px; }
     }
     @media (max-width: 600px) {
-      section { padding: 64px 0; }
+      section { padding: 48px 0; }
+      .section-header { margin-bottom: 36px; }
       .certs-grid { grid-template-columns: 1fr; }
       .hero-stat-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
+
+      /* Fix contact section gap + contrast on mobile */
+      .contact-intro {
+        font-size: 15px;
+        color: var(--text-body);
+      }
+      .contact-item-value {
+        color: var(--white);
+      }
+      .contact-item-value a {
+        color: var(--accent);
+      }
+      .contact-item-label {
+        color: var(--accent);
+      }
+
+      /* Why us section tighten */
+      .why-grid { gap: 32px; }
+      .stats-panel { grid-template-columns: 1fr 1fr; }
+      .stat-block.span2 { grid-column: span 2; }
+
+      /* Agent banner mobile */
+      .agent-banner { padding: 28px 20px; }
+      .agent-banner::before { display: none; }
+
+      /* Footer improvements */
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .footer-socials { order: -1; }
+      .footer-legal { color: rgba(123,173,165,0.7); }
+      .footer-reg { color: rgba(123,173,165,0.6); }
+
+      /* Why barkey strip */
+      .why-barkey { padding: 24px 20px; }
+      .why-barkey-items { flex-direction: column; gap: 20px; }
+      .wb-sep { display: none; }
+      .wb-item { padding: 0; text-align: left; display: flex; align-items: center; gap: 16px; }
+      .wb-num { font-size: 22px; min-width: 48px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
