@@ -662,6 +662,304 @@
       font-weight: 600;
     }
 
+    /* ── AGENT BANNER ───────────────────────────────────────────── */
+    .agent-banner {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: center;
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 48px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .agent-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--cyan));
+    }
+    .agent-flag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .agent-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .agent-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .agent-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .agent-desc strong { color: var(--text-body); }
+    .agent-trust {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .agent-trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    /* Origin card */
+    .agent-origin-card {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .origin-flag-wrap {
+      display: flex; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .origin-label {
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .origin-name {
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .origin-country {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .origin-divider {
+      height: 1px;
+      background: var(--border-light);
+      margin: 14px 0;
+    }
+    .origin-certs {
+      display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .origin-cert {
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── PROMO PRODUCT CARDS ─────────────────────────────────────── */
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .promo-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      display: flex; flex-direction: column; gap: 20px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .promo-card:hover {
+      border-color: rgba(0,191,165,0.35);
+      transform: translateY(-4px);
+    }
+    .promo-card-header {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .promo-icon-wrap {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .promo-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+      margin-bottom: 6px;
+    }
+    .promo-product-name {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .promo-product-brand {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      letter-spacing: 0.05em;
+    }
+    .promo-tagline {
+      font-family: var(--font-display);
+      font-size: 13px; font-style: italic;
+      color: var(--accent);
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+    .promo-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .promo-desc strong { color: var(--text-body); }
+    .promo-features { display: flex; flex-direction: column; gap: 8px; }
+    .promo-feature-title {
+      font-family: var(--font-display);
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .promo-feature-list { display: flex; flex-direction: column; gap: 7px; }
+    .promo-feature {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .promo-feature svg { flex-shrink: 0; margin-top: 2px; }
+    .promo-specs {
+      background: rgba(0,191,165,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-md);
+      padding: 14px 16px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .promo-spec {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    .spec-k {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    .spec-v {
+      font-family: var(--font-display);
+      font-size: 11.5px; font-weight: 600;
+      color: var(--text-body);
+      text-align: right;
+    }
+    .promo-use {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    }
+    .use-label {
+      font-family: var(--font-display);
+      font-size: 10.5px; font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-right: 2px;
+    }
+    .use-tag {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 100px;
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+    .promo-cta {
+      display: inline-flex; align-items: center;
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 600;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 11px 20px;
+      border-radius: 100px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      align-self: flex-start;
+      margin-top: auto;
+    }
+    .promo-cta:hover {
+      background: rgba(0,191,165,0.08);
+      border-color: var(--accent);
+    }
+
+    /* ── WHY BARKEY STRIP ────────────────────────────────────────── */
+    .why-barkey {
+      margin-top: 48px;
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px 40px;
+    }
+    .why-barkey-title {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .why-barkey-items {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap;
+    }
+    .wb-item {
+      flex: 1; min-width: 140px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .wb-num {
+      font-family: var(--font-display);
+      font-size: 28px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .wb-label {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .wb-sep {
+      width: 1px; height: 48px;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .agent-banner { grid-template-columns: 1fr; }
+      .agent-origin-card { display: none; }
+      .promo-grid { grid-template-columns: 1fr; }
+      .why-barkey-items { gap: 16px; }
+      .wb-sep { display: none; }
+    }
+
     /* ── CERTIFICATIONS ─────────────────────────────────────────── */
     .certs-grid {
       display: grid;
@@ -1428,56 +1726,285 @@
   <!-- PRODUCTS -->
   <section class="products" id="products">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="tag">Products</span>
-        <h2 class="section-title">MDA-Registered Medical Devices</h2>
-        <p class="section-sub">We are the authorized distributor of Barkey warming systems in Semenanjung Malaysia — all devices fully registered with the Malaysia Medical Device Authority.</p>
+
+      <!-- Agent hero banner -->
+      <div class="agent-banner reveal">
+        <div class="agent-banner-left">
+          <div class="agent-flag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Official Agent · Semenanjung Malaysia
+          </div>
+          <h2 class="agent-title">Your Trusted Source for<br><em>Barkey Warming Systems</em></h2>
+          <p class="agent-desc">
+            Advancetech Universal is the official appointed agent for <strong>Barkey GmbH &amp; Co. KG</strong> in Semenanjung Malaysia — bringing Germany's leading blood and fluid warming technology directly to Malaysian hospitals, operating theatres, blood banks, and critical care units. Every system is fully registered with the Malaysia Medical Device Authority (MDA) and supported by our in-house biomedical engineering team.
+          </p>
+          <div class="agent-trust">
+            <div class="agent-trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Factory-direct supply from Germany</span>
+            </div>
+            <div class="agent-trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Full MDA registration on all devices</span>
+            </div>
+            <div class="agent-trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>In-house biomedical engineering after-sales support</span>
+            </div>
+            <div class="agent-trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Dry-heat technology — zero cross-contamination risk</span>
+            </div>
+          </div>
+        </div>
+        <div class="agent-banner-right">
+          <div class="agent-origin-card">
+            <div class="origin-flag-wrap">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div class="origin-label">Manufactured by</div>
+            <div class="origin-name">Barkey GmbH &amp; Co. KG</div>
+            <div class="origin-country">Leopoldshoehe, Germany</div>
+            <div class="origin-divider"></div>
+            <div class="origin-label">Distributed by</div>
+            <div class="origin-name">Advancetech Universal Sdn. Bhd.</div>
+            <div class="origin-country">Batu Caves, Selangor · Malaysia</div>
+            <div class="origin-divider"></div>
+            <div class="origin-certs">
+              <span class="origin-cert">CE Marked</span>
+              <span class="origin-cert">ISO 13485</span>
+              <span class="origin-cert">MDA Registered</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="products-brand reveal">
-        <div class="products-brand-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+
+      <!-- Product heading -->
+      <div class="section-header reveal" style="margin-top:80px">
+        <span class="tag">Barkey Product Range</span>
+        <h2 class="section-title">Precision Warming Solutions<br>for Critical Care</h2>
+        <p class="section-sub">Three specialist systems — each engineered by Barkey for a specific clinical application, backed by decades of German precision manufacturing.</p>
+      </div>
+
+      <!-- Product cards — full promotional -->
+      <div class="promo-grid">
+
+        <!-- PLASMATHERM -->
+        <div class="promo-card reveal" style="transition-delay:0.05s">
+          <div class="promo-card-header">
+            <div class="promo-icon-wrap" style="background:rgba(96,165,250,0.1)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <span class="promo-badge class-b">MDR Class B · MDA Registered</span>
+              <div class="promo-product-name">plasmatherm</div>
+              <div class="promo-product-brand">Barkey · Germany</div>
+            </div>
+          </div>
+          <div class="promo-tagline">"Water-free plasma thawing. Zero contamination risk."</div>
+          <p class="promo-desc">
+            The Barkey <strong>plasmatherm</strong> is the clinical gold standard for thawing Fresh Frozen Plasma (FFP), cryoprecipitate, and cryopreserved stem cell therapies. Its exclusive <strong>dry-heat technology</strong> eliminates any direct water contact with blood bags — protecting patients and staff from cross-contamination in blood banks, transfusion units, and cell therapy departments.
+          </p>
+          <div class="promo-features">
+            <div class="promo-feature-title">Key Advantages</div>
+            <div class="promo-feature-list">
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Thaws up to 4 bags simultaneously (emergency: up to 8)</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Closed water circuit — no bag-to-water exposure</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>3 safety layers: electronic + mechanical overtemp + humidity sensor</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Transparent lid for continuous visual monitoring</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Water change required only once per year</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Customizable programs for plasma, blood, and HPC therapies</span>
+              </div>
+            </div>
+          </div>
+          <div class="promo-specs">
+            <div class="promo-spec"><span class="spec-k">Temperature Range</span><span class="spec-v">+37°C to +45°C</span></div>
+            <div class="promo-spec"><span class="spec-k">Capacity</span><span class="spec-v">4–8 bags</span></div>
+            <div class="promo-spec"><span class="spec-k">Certification</span><span class="spec-v">CE 0123 · ISO 13485</span></div>
+            <div class="promo-spec"><span class="spec-k">MDA Reg. No.</span><span class="spec-v">GB28524251317</span></div>
+          </div>
+          <div class="promo-use">
+            <span class="use-label">Ideal for:</span>
+            <span class="use-tag">Blood Bank</span>
+            <span class="use-tag">Transfusion Medicine</span>
+            <span class="use-tag">Cell &amp; Gene Therapy</span>
+            <span class="use-tag">ICU</span>
+          </div>
+          <a href="#contact" class="promo-cta">Request a Demo →</a>
         </div>
-        <div class="products-brand-text">
-          <strong>Barkey GmbH &amp; Co. KG — Made in Germany</strong>
-          Authorized Distributor: Advancetech Universal Sdn. Bhd.<br>
-          Scope: Semenanjung Malaysia
+
+        <!-- S-LINE -->
+        <div class="promo-card reveal" style="transition-delay:0.1s">
+          <div class="promo-card-header">
+            <div class="promo-icon-wrap" style="background:rgba(0,191,165,0.1)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div>
+              <span class="promo-badge class-c">MDR Class C · MDA Registered</span>
+              <div class="promo-product-name">S-line</div>
+              <div class="promo-product-brand">Barkey · Germany</div>
+            </div>
+          </div>
+          <div class="promo-tagline">"Inline warming. Patient-ready in seconds."</div>
+          <p class="promo-desc">
+            The Barkey <strong>S-line</strong> is a next-generation inline blood and infusion fluid warmer designed for transfusion, IV therapy, and dialysis. Its patented <strong>silicone warming sleeve</strong> with embedded heating wires delivers rapid, uniform warming precisely at the point of delivery — eliminating the risk of hypothermia during large-volume fluid administration.
+          </p>
+          <div class="promo-features">
+            <div class="promo-feature-title">Key Advantages</div>
+            <div class="promo-feature-list">
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Precise 39°C delivery — measured at the patient end of the line</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Flow rates up to 25 ml/min for high-volume therapy</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Single-touch on/off — intuitive operation for nursing staff</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>No annual safety check required — reducing maintenance burden</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Wide voltage range (100–240 VAC) — compatible with any ward</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Available in 1.2 m and 1.5 m sleeve lengths</span>
+              </div>
+            </div>
+          </div>
+          <div class="promo-specs">
+            <div class="promo-spec"><span class="spec-k">Set Temperature</span><span class="spec-v">39°C (fixed, clinically validated)</span></div>
+            <div class="promo-spec"><span class="spec-k">Max Flow Rate</span><span class="spec-v">25 ml/min</span></div>
+            <div class="promo-spec"><span class="spec-k">Power Supply</span><span class="spec-v">100–240 VAC · 50/60 Hz</span></div>
+            <div class="promo-spec"><span class="spec-k">MDA Reg. No.</span><span class="spec-v">GC3201324-164319</span></div>
+          </div>
+          <div class="promo-use">
+            <span class="use-label">Ideal for:</span>
+            <span class="use-tag">Operating Theatre</span>
+            <span class="use-tag">Emergency &amp; Trauma</span>
+            <span class="use-tag">Dialysis Unit</span>
+            <span class="use-tag">Neonatal ICU</span>
+          </div>
+          <a href="#contact" class="promo-cta">Request a Demo →</a>
+        </div>
+
+        <!-- WARMING CENTER II -->
+        <div class="promo-card reveal" style="transition-delay:0.15s">
+          <div class="promo-card-header">
+            <div class="promo-icon-wrap" style="background:rgba(232,201,106,0.1)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <span class="promo-badge class-el">Medical Equipment</span>
+              <div class="promo-product-name">warming center II</div>
+              <div class="promo-product-brand">Barkey · Germany</div>
+            </div>
+          </div>
+          <div class="promo-tagline">"Always ready. Perfectly conditioned."</div>
+          <p class="promo-desc">
+            The Barkey <strong>warming center II</strong> is a professional double-drawer warming cabinet that keeps IV fluids, blood products, and clinical textiles at precise therapeutic temperatures — ensuring they are immediately ready when seconds matter. Its circulating-air filtration system actively removes contaminants, maintaining a hygienic environment for every stored product.
+          </p>
+          <div class="promo-features">
+            <div class="promo-feature-title">Key Advantages</div>
+            <div class="promo-feature-list">
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Dual-zone: +35–40°C for fluids / +41–55°C for textiles</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Capacity: 40 × 1-litre infusion bottles (two drawers)</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>HEPA-filtered circulating air — contamination-free storage</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Electronic + mechanical overtemperature alarm</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Open-drawer alarm after 1 minute — prevents temperature drift</span>
+              </div>
+              <div class="promo-feature">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Ultra-low standby power (&lt;1.5 W) — energy efficient</span>
+              </div>
+            </div>
+          </div>
+          <div class="promo-specs">
+            <div class="promo-spec"><span class="spec-k">Temperature Range</span><span class="spec-v">+35°C to +55°C (dual zone)</span></div>
+            <div class="promo-spec"><span class="spec-k">Capacity</span><span class="spec-v">40 × 1L bottles (2 drawers)</span></div>
+            <div class="promo-spec"><span class="spec-k">Power Consumption</span><span class="spec-v">220 W · Standby &lt;1.5 W</span></div>
+            <div class="promo-spec"><span class="spec-k">Availability</span><span class="spec-v">Contact us for pricing</span></div>
+          </div>
+          <div class="promo-use">
+            <span class="use-label">Ideal for:</span>
+            <span class="use-tag">Operating Theatre</span>
+            <span class="use-tag">Pharmacy</span>
+            <span class="use-tag">Ward Store</span>
+            <span class="use-tag">A&amp;E Department</span>
+          </div>
+          <a href="#contact" class="promo-cta">Request a Quotation →</a>
+        </div>
+
+      </div>
+
+      <!-- Why Barkey strip -->
+      <div class="why-barkey reveal">
+        <div class="why-barkey-title">Why Barkey?</div>
+        <div class="why-barkey-items">
+          <div class="wb-item">
+            <div class="wb-num">40+</div>
+            <div class="wb-label">Years of German<br>Engineering Excellence</div>
+          </div>
+          <div class="wb-sep"></div>
+          <div class="wb-item">
+            <div class="wb-num">CE</div>
+            <div class="wb-label">European Conformity<br>ISO 13485 Certified</div>
+          </div>
+          <div class="wb-sep"></div>
+          <div class="wb-item">
+            <div class="wb-num">MDA</div>
+            <div class="wb-label">Fully Registered<br>Malaysia Medical Device Authority</div>
+          </div>
+          <div class="wb-sep"></div>
+          <div class="wb-item">
+            <div class="wb-num">0°</div>
+            <div class="wb-label">Cross-Contamination Risk<br>Dry-Heat Technology</div>
+          </div>
+          <div class="wb-sep"></div>
+          <div class="wb-item">
+            <div class="wb-num">3</div>
+            <div class="wb-label">Specialist Systems<br>Available via Advancetech</div>
+          </div>
         </div>
       </div>
-      <div class="products-grid">
-        <div class="product-card reveal" style="transition-delay:0.05s">
-          <span class="product-class class-b">MDR Class B</span>
-          <div class="product-name">PLASMATHERM</div>
-          <div class="product-brand">Barkey · Germany</div>
-          <div class="product-desc">
-            Precision plasma thawing system engineered for safe, controlled thawing of fresh frozen plasma and cryoprecipitate. Dry-heat technique eliminates cross-contamination risk in blood banking and transfusion medicine.
-          </div>
-          <div class="product-reg">
-            Reg. No. <strong>GB28524251317</strong> · MDA Registered
-          </div>
-        </div>
-        <div class="product-card reveal" style="transition-delay:0.1s">
-          <span class="product-class class-c">MDR Class C</span>
-          <div class="product-name">S-LINE</div>
-          <div class="product-brand">Barkey · Germany</div>
-          <div class="product-desc">
-            High-performance blood and fluid warming system designed for transfusion, infusion, and IV therapy. Rapid, uniform warming ensures patient safety during critical care procedures using validated dry-heat technology.
-          </div>
-          <div class="product-reg">
-            Reg. No. <strong>GC3201324-164319</strong> · MDA Registered
-          </div>
-        </div>
-        <div class="product-card reveal" style="transition-delay:0.15s">
-          <span class="product-class class-el">Equipment</span>
-          <div class="product-name">WC II-300</div>
-          <div class="product-brand">Barkey · Germany</div>
-          <div class="product-desc">
-            Professional warming cabinet for blood products, IV fluids, and related medical consumables. Precise temperature control maintains product integrity across operating theatres, ICU, and emergency departments.
-          </div>
-          <div class="product-reg">
-            Authorized supply in Semenanjung Malaysia · Contact us for specifications
-          </div>
-        </div>
-      </div>
+
     </div>
   </section>
 
