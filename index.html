@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advancetech Universal Sdn. Bhd. — Biomedical Engineering & Healthcare Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design Tokens ─────────────────────────────────────────── */
+    :root {
+      --dark:         #071410;
+      --dark-mid:     #0C1E1A;
+      --dark-surface: #122820;
+      --primary:      #006B5F;
+      --primary-mid:  #00897B;
+      --accent:       #00BFA5;
+      --cyan:         #26C6DA;
+      --gold:         #E8C96A;
+      --white:        #FFFFFF;
+      --off-white:    #F2F8F7;
+      --text-muted:   #7BADA5;
+      --text-body:    #D4ECEA;
+      --border:       rgba(0,191,165,0.18);
+      --border-light: rgba(0,191,165,0.08);
+
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+
+      --r-sm:  6px;
+      --r-md:  12px;
+      --r-lg:  20px;
+      --r-xl:  32px;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--text-body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Utility ───────────────────────────────────────────────── */
+    .container {
+      width: min(1200px, 100% - 2rem);
+      margin-inline: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: rgba(0,191,165,0.06);
+    }
+    .tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 72px;
+      display: flex; align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(7, 20, 16, 0.92);
+      backdrop-filter: blur(16px);
+      border-color: var(--border-light);
+    }
+    .nav-inner {
+      width: min(1200px, 100% - 2rem);
+      margin-inline: auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .nav-logo img {
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fff;
+      padding: 4px;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-logo-text span:first-child {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-text span:last-child {
+      font-family: var(--font-display);
+      font-size: 9px; font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 13.5px; font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 600;
+      color: var(--dark);
+      background: var(--accent);
+      padding: 9px 22px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover {
+      background: var(--cyan);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    /* Grid texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border-light) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 20%, transparent 80%);
+    }
+    /* Radial glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 900px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(0,137,123,0.22) 0%, transparent 70%);
+      top: -100px; left: 50%; transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px; align-items: center;
+    }
+    .hero-eyebrow {
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.07;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 40px;
+      line-height: 1.75;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 600;
+      color: var(--dark);
+      background: var(--accent);
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,191,165,0.35);
+    }
+    .btn-outline {
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 500;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--border-light);
+      border-color: var(--accent);
+    }
+    /* Hero ECG card */
+    .hero-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,191,165,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .ecg-container {
+      width: 100%;
+      height: 90px;
+      margin-bottom: 24px;
+    }
+    .ecg-svg {
+      width: 100%; height: 100%;
+    }
+    .ecg-path {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: ecgDraw 2.8s var(--ease-out) 0.5s forwards;
+    }
+    @keyframes ecgDraw {
+      to { stroke-dashoffset: 0; }
+    }
+    .ecg-path-glow {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 6;
+      stroke-linecap: round;
+      opacity: 0.15;
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: ecgDraw 2.8s var(--ease-out) 0.5s forwards;
+    }
+    .hero-stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .hero-stat {
+      background: rgba(0,191,165,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 16px;
+      text-align: center;
+    }
+    .hero-stat-val {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .hero-badge {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(0,191,165,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+    }
+    .badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ADE80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,0.25);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.25); }
+      50% { box-shadow: 0 0 0 6px rgba(74,222,128,0.1); }
+    }
+    .badge-text {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 500;
+      color: var(--text-body);
+    }
+    .badge-text strong { color: #4ADE80; }
+
+    /* ── COMPLIANCE BAR ─────────────────────────────────────────── */
+    .compliance-bar {
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      background: var(--dark-mid);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+    .compliance-inner {
+      display: flex; align-items: center; gap: 0;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+    .compliance-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 0 40px;
+      font-family: var(--font-display);
+      font-size: 12.5px; font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .compliance-item svg {
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+    .compliance-sep {
+      color: var(--border);
+      font-size: 20px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION SHARED ─────────────────────────────────────────── */
+    section { padding: 100px 0; }
+    .section-header {
+      margin-bottom: 64px;
+    }
+    .section-header.centered { text-align: center; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-top: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .section-header.centered .section-sub {
+      margin-inline: auto;
+    }
+
+    /* ── ABOUT ─────────────────────────────────────────────────── */
+    .about { background: var(--dark-mid); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-text p strong {
+      color: var(--text-body);
+      font-weight: 500;
+    }
+    .about-pillars {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-top: 32px;
+    }
+    .pillar {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 20px;
+      background: var(--dark-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-md);
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .pillar:hover {
+      border-color: var(--border);
+      background: rgba(0,191,165,0.05);
+    }
+    .pillar-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border-radius: 8px;
+      background: rgba(0,191,165,0.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pillar-icon svg { width: 18px; height: 18px; }
+    .pillar-body { flex: 1; }
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 13.5px; font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .pillar-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    /* Vertical divider info */
+    .about-info {
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .info-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--cyan));
+      border-radius: 2px 0 0 2px;
+    }
+    .info-card-label {
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .info-card-value {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .info-card-value.mono {
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SERVICES ──────────────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-lg);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--border);
+      transform: translateY(-4px);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .service-icon-wrap svg { width: 26px; height: 26px; }
+    .service-icon-wrap.teal   { background: rgba(0,191,165,0.12); }
+    .service-icon-wrap.cyan   { background: rgba(38,198,218,0.12); }
+    .service-icon-wrap.gold   { background: rgba(232,201,106,0.12); }
+    .service-icon-wrap.green  { background: rgba(74,222,128,0.12); }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 19px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .service-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .s-tag {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── PRODUCTS ──────────────────────────────────────────────── */
+    .products { background: var(--dark-mid); }
+    .products-brand {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 48px;
+      padding: 20px 28px;
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      max-width: 520px;
+    }
+    .products-brand-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .products-brand-icon svg { width: 24px; height: 24px; }
+    .products-brand-text {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .products-brand-text strong {
+      display: block;
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .product-card:hover {
+      border-color: rgba(0,191,165,0.4);
+      transform: translateY(-4px);
+    }
+    .product-class {
+      display: inline-flex;
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .class-b { color: #60A5FA; border-color: rgba(96,165,250,0.3); background: rgba(96,165,250,0.07); }
+    .class-c { color: #F59E0B; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.07); }
+    .class-el { color: var(--accent); border-color: var(--border); background: rgba(0,191,165,0.07); }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .product-brand {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .product-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .product-reg {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      padding: 10px 14px;
+      background: rgba(0,191,165,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-sm);
+    }
+    .product-reg strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── CERTIFICATIONS ─────────────────────────────────────────── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .cert-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-lg);
+      padding: 28px 22px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .cert-card:hover {
+      border-color: var(--border);
+      transform: translateY(-3px);
+    }
+    .cert-badge {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .cert-badge svg { width: 26px; height: 26px; }
+    .cert-badge.gov  { background: rgba(96,165,250,0.12); }
+    .cert-badge.mda  { background: rgba(0,191,165,0.12); }
+    .cert-badge.cidb { background: rgba(232,201,106,0.12); }
+    .cert-badge.lod  { background: rgba(74,222,128,0.12); }
+    .cert-name {
+      font-family: var(--font-display);
+      font-size: 13.5px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .cert-no {
+      font-family: var(--font-display);
+      font-size: 10.5px;
+      color: var(--accent);
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+    }
+    .cert-expiry {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .cert-expiry strong { color: var(--text-body); }
+
+    /* Expiry tracker */
+    .expiry-tracker {
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .expiry-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .expiry-header h3 {
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 600;
+      color: var(--white);
+    }
+    .expiry-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1fr 80px;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.2s;
+    }
+    .expiry-row:last-child { border-bottom: none; }
+    .expiry-row:hover { background: rgba(0,191,165,0.03); }
+    .expiry-doc {
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 500;
+      color: var(--text-body);
+    }
+    .expiry-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .expiry-issuer {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .expiry-status {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    .status-active { background: rgba(74,222,128,0.12); color: #4ADE80; }
+    .status-warn   { background: rgba(251,191,36,0.12); color: #FBBF24; }
+
+    /* ── WHY US ─────────────────────────────────────────────────── */
+    .why { background: var(--dark-mid); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .why-heading {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .why-heading em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .why-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .why-items {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .why-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .why-check {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(0,191,165,0.12);
+      border: 1px solid rgba(0,191,165,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .why-check svg { width: 12px; height: 12px; }
+    .why-item-text {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .why-item-text strong { color: var(--text-body); }
+    /* Stats on the right */
+    .stats-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat-block {
+      background: var(--dark-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-lg);
+      padding: 32px 24px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-block:hover {
+      border-color: var(--border);
+      transform: translateY(-3px);
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 42px; font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .stat-lbl {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .stat-sub {
+      font-size: 11.5px;
+      color: rgba(123,173,165,0.6);
+      margin-top: 4px;
+    }
+    .stat-block.span2 {
+      grid-column: span 2;
+    }
+    .stat-block.span2 .stat-val { font-size: 32px; }
+
+    /* ── CONTACT ────────────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .contact-intro {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .contact-items {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .contact-item-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px;
+      background: rgba(0,191,165,0.1);
+      border: 1px solid var(--border-light);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-item-icon svg { width: 18px; height: 18px; }
+    .contact-item-body {
+      padding-top: 2px;
+    }
+    .contact-item-label {
+      font-family: var(--font-display);
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+    .contact-item-value {
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+    .contact-item-value a {
+      color: var(--accent);
+      transition: color 0.2s;
+    }
+    .contact-item-value a:hover { color: var(--cyan); }
+    /* Contact form */
+    .contact-form {
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 36px;
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: var(--dark);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r-md);
+      padding: 13px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-body);
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,191,165,0.12);
+    }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(123,173,165,0.4);
+    }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .btn-submit {
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 600;
+      color: var(--dark);
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      border: none;
+      padding: 15px 28px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,191,165,0.3);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border-light);
+      padding: 48px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand img {
+      width: 48px; height: 48px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 16px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer-brand-sub {
+      font-family: var(--font-display);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13.5px;
+      color: rgba(123,173,165,0.7);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border-light);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-legal {
+      font-size: 12px;
+      color: rgba(123,173,165,0.5);
+    }
+    .footer-reg {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: rgba(123,173,165,0.4);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SCROLL-TO-TOP ──────────────────────────────────────────── */
+    .scroll-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--dark-surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 50;
+    }
+    .scroll-top.show {
+      opacity: 1; pointer-events: auto;
+    }
+    .scroll-top:hover {
+      background: rgba(0,191,165,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .expiry-row { grid-template-columns: 1fr 1fr; }
+      .expiry-issuer { display: none; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 64px 0; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .ecg-path, .ecg-path-glow { animation: none; stroke-dashoffset: 0; }
+      .compliance-inner { animation: none; }
+      .badge-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="assets/logo.jpg" alt="Advancetech Universal logo" />
+        <div class="nav-logo-text">
+          <span>Advancetech Universal</span>
+          <span>Sdn. Bhd.</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#certifications">Compliance</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <div class="hero-eyebrow reveal">
+            <span class="tag">Biomedical Engineering · Malaysia</span>
+          </div>
+          <h1 class="hero-title reveal" style="transition-delay:0.1s">
+            Engineering <em>Healthcare</em><br>
+            with Precision &amp;<br>
+            Intelligence
+          </h1>
+          <p class="hero-desc reveal" style="transition-delay:0.2s">
+            Advancetech Universal Sdn. Bhd. delivers biomedical engineering services, MDA-registered medical equipment supply, and AI-driven predictive maintenance solutions for hospitals and healthcare institutions across Malaysia.
+          </p>
+          <div class="hero-actions reveal" style="transition-delay:0.3s">
+            <a href="#services" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Our Services
+            </a>
+            <a href="#contact" class="btn-outline">Request a Consultation</a>
+          </div>
+        </div>
+        <!-- ECG Dashboard Card -->
+        <div class="hero-card reveal" style="transition-delay:0.4s">
+          <div class="ecg-container">
+            <svg class="ecg-svg" viewBox="0 0 380 90" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00BFA5" stop-opacity="0.3"/>
+                  <stop offset="50%" stop-color="#00BFA5" stop-opacity="1"/>
+                  <stop offset="100%" stop-color="#26C6DA" stop-opacity="0.3"/>
+                </linearGradient>
+              </defs>
+              <!-- Glow -->
+              <path class="ecg-path-glow" d="M0,45 L30,45 L38,45 L42,10 L46,80 L50,20 L54,70 L58,45 L80,45 L110,45 L118,45 L122,10 L126,80 L130,20 L134,70 L138,45 L160,45 L190,45 L198,45 L202,10 L206,80 L210,20 L214,70 L218,45 L240,45 L270,45 L278,45 L282,10 L286,80 L290,20 L294,70 L298,45 L340,45 L380,45" stroke="url(#ecgGrad)"/>
+              <!-- Line -->
+              <path class="ecg-path" d="M0,45 L30,45 L38,45 L42,10 L46,80 L50,20 L54,70 L58,45 L80,45 L110,45 L118,45 L122,10 L126,80 L130,20 L134,70 L138,45 L160,45 L190,45 L198,45 L202,10 L206,80 L210,20 L214,70 L218,45 L240,45 L270,45 L278,45 L282,10 L286,80 L290,20 L294,70 L298,45 L340,45 L380,45" stroke="url(#ecgGrad)"/>
+            </svg>
+          </div>
+          <div class="hero-stat-grid">
+            <div class="hero-stat">
+              <div class="hero-stat-val">Class B</div>
+              <div class="hero-stat-lbl">Plasmatherm MDR</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-val">Class C</div>
+              <div class="hero-stat-lbl">Barkey S-Line MDR</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-val">MDA</div>
+              <div class="hero-stat-lbl">Establishment Lic.</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-val">G1</div>
+              <div class="hero-stat-lbl">CIDB Registered</div>
+            </div>
+          </div>
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            <div class="badge-text">
+              <strong>Active</strong> — MDA-7072-W124 · Valid until Feb 2028
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE MARQUEE BAR -->
+  <div class="compliance-bar">
+    <div class="compliance-inner" id="marqueeInner">
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        MDA Establishment Licence — MDA-7072-W124
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        MDR Class B — PLASMATHERM · GB28524251317
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        MDR Class C — BARKEY S-LINE · GC3201324-164319
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        SSM Incorporated — 202501022713 (1624126-V)
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        Authorized Barkey Distributor — Semenanjung Malaysia
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        CIDB Registered — Grade G1 · B04 CE21 M15
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        MDA Establishment Licence — MDA-7072-W124
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        MDR Class B — PLASMATHERM · GB28524251317
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        MDR Class C — BARKEY S-LINE · GC3201324-164319
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        SSM Incorporated — 202501022713 (1624126-V)
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        Authorized Barkey Distributor — Semenanjung Malaysia
+      </div>
+      <span class="compliance-sep">·</span>
+      <div class="compliance-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        CIDB Registered — Grade G1 · B04 CE21 M15
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="section-header">
+            <span class="tag">About Us</span>
+            <h2 class="section-title">A New Standard in<br>Biomedical Engineering</h2>
+          </div>
+          <p>
+            <strong>Advancetech Universal Sdn. Bhd.</strong> was incorporated in May 2025 under the Companies Act 2016 with a singular focus: elevating biomedical engineering services across Malaysian healthcare institutions.
+          </p>
+          <p>
+            We partner with hospitals, clinics, and laboratories to deliver end-to-end technical support — from preventive maintenance and equipment commissioning, to MDA-compliant medical device supply and AI-powered predictive maintenance analytics.
+          </p>
+          <div class="about-pillars">
+            <div class="pillar">
+              <div class="pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="pillar-body">
+                <div class="pillar-title">Precision Maintenance</div>
+                <div class="pillar-desc">Preventive &amp; corrective maintenance designed to maximize equipment uptime and patient safety.</div>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.071 4.929a10 10 0 010 14.142M4.929 4.929a10 10 0 000 14.142"/></svg>
+              </div>
+              <div class="pillar-body">
+                <div class="pillar-title">AI Predictive Analytics</div>
+                <div class="pillar-desc">Machine learning–assisted failure prediction reduces unplanned downtime and service costs.</div>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div class="pillar-body">
+                <div class="pillar-title">MDA-Compliant Supply</div>
+                <div class="pillar-desc">Authorized distributor of Barkey warming systems — all devices registered under Malaysia's Medical Device Authority.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-info reveal" style="transition-delay:0.15s">
+          <div class="info-card">
+            <div class="info-card-label">Company Registration</div>
+            <div class="info-card-value mono">202501022713 (1624126-V)</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Incorporated Under</div>
+            <div class="info-card-value">Companies Act 2016 (Act 777)<br><small style="font-size:13px;color:var(--text-muted)">21 May 2025 — Kuala Lumpur</small></div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Registered Address</div>
+            <div class="info-card-value" style="font-size:14px">Lot A-G-19, Blok Mawar A<br>Jalan SM 1/1, Selayang Mulia<br>68100 Batu Caves, Selangor</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Vision</div>
+            <div class="info-card-value" style="font-size:14px;font-weight:400;color:var(--text-muted)">To become a leading biomedical engineering service provider in Malaysia through technical excellence, healthcare innovation, and reliable engineering support.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="tag">What We Do</span>
+        <h2 class="section-title">End-to-End Healthcare<br>Engineering Solutions</h2>
+        <p class="section-sub">Four core competencies, all grounded in technical precision and regulatory compliance.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal" style="transition-delay:0.05s">
+          <div class="service-icon-wrap teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="service-title">Biomedical Engineering Services</div>
+          <div class="service-desc">
+            Comprehensive maintenance programs for medical equipment across hospitals, clinics, and laboratories — structured to optimize device lifespan, maintain clinical performance, and meet MDA regulatory standards.
+          </div>
+          <div class="service-tags">
+            <span class="s-tag">Preventive Maintenance</span>
+            <span class="s-tag">Corrective Maintenance</span>
+            <span class="s-tag">Calibration Coordination</span>
+            <span class="s-tag">Technical Reporting</span>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <div class="service-icon-wrap cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="service-title">Medical Equipment Supply</div>
+          <div class="service-desc">
+            Authorized distributor of Barkey warming systems — including blood warming, fluid warming, plasma thawing, and warming cabinet solutions. All products are MDA-registered and sourced directly from Germany.
+          </div>
+          <div class="service-tags">
+            <span class="s-tag">Blood Warming</span>
+            <span class="s-tag">Fluid Warming</span>
+            <span class="s-tag">Plasma Thawing</span>
+            <span class="s-tag">MDA Registered</span>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.15s">
+          <div class="service-icon-wrap gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.071 4.929a10 10 0 010 14.142M4.929 4.929a10 10 0 000 14.142"/><path d="M15.536 8.464a5 5 0 010 7.072M8.464 8.464a5 5 0 000 7.072"/></svg>
+          </div>
+          <div class="service-title">AI Predictive Maintenance</div>
+          <div class="service-desc">
+            Data-driven predictive maintenance strategies using AI analytics to detect equipment failure patterns early, reduce unplanned downtime, and improve the reliability of clinical operations.
+          </div>
+          <div class="service-tags">
+            <span class="s-tag">Predictive Analytics</span>
+            <span class="s-tag">Failure Forecasting</span>
+            <span class="s-tag">Smart Monitoring</span>
+            <span class="s-tag">Cost Reduction</span>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-icon-wrap green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="service-title">Testing &amp; Commissioning</div>
+          <div class="service-desc">
+            End-to-end installation verification, operational testing, and acceptance activities for new medical equipment deployments. We ensure every device meets clinical and regulatory requirements before going live.
+          </div>
+          <div class="service-tags">
+            <span class="s-tag">Installation Verification</span>
+            <span class="s-tag">Operational Testing</span>
+            <span class="s-tag">MDA Compliance</span>
+            <span class="s-tag">Technical Acceptance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">Products</span>
+        <h2 class="section-title">MDA-Registered Medical Devices</h2>
+        <p class="section-sub">We are the authorized distributor of Barkey warming systems in Semenanjung Malaysia — all devices fully registered with the Malaysia Medical Device Authority.</p>
+      </div>
+      <div class="products-brand reveal">
+        <div class="products-brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="products-brand-text">
+          <strong>Barkey GmbH &amp; Co. KG — Made in Germany</strong>
+          Authorized Distributor: Advancetech Universal Sdn. Bhd.<br>
+          Scope: Semenanjung Malaysia · LOD valid until April 2028
+        </div>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal" style="transition-delay:0.05s">
+          <span class="product-class class-b">MDR Class B</span>
+          <div class="product-name">PLASMATHERM</div>
+          <div class="product-brand">Barkey · Germany</div>
+          <div class="product-desc">
+            Precision plasma thawing system engineered for safe, controlled thawing of fresh frozen plasma and cryoprecipitate. Dry-heat technique eliminates cross-contamination risk in blood banking and transfusion medicine.
+          </div>
+          <div class="product-reg">
+            Reg. No. <strong>GB28524251317</strong> · Valid 05/10/2023 – 04/10/2028
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:0.1s">
+          <span class="product-class class-c">MDR Class C</span>
+          <div class="product-name">S-LINE</div>
+          <div class="product-brand">Barkey · Germany</div>
+          <div class="product-desc">
+            High-performance blood and fluid warming system designed for transfusion, infusion, and IV therapy. Rapid, uniform warming ensures patient safety during critical care procedures using validated dry-heat technology.
+          </div>
+          <div class="product-reg">
+            Reg. No. <strong>GC3201324-164319</strong> · Valid 04/03/2024 – 03/03/2029
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:0.15s">
+          <span class="product-class class-el">Equipment</span>
+          <div class="product-name">WC II-300</div>
+          <div class="product-brand">Barkey · Germany</div>
+          <div class="product-desc">
+            Professional warming cabinet for blood products, IV fluids, and related medical consumables. Precise temperature control maintains product integrity across operating theatres, ICU, and emergency departments.
+          </div>
+          <div class="product-reg">
+            Authorized supply in Semenanjung Malaysia · Contact us for specifications
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="tag">Compliance &amp; Credentials</span>
+        <h2 class="section-title">Fully Registered &amp; Authorized</h2>
+        <p class="section-sub">All our operations and medical devices are registered with the relevant Malaysian regulatory bodies.</p>
+      </div>
+      <div class="certs-grid reveal">
+        <div class="cert-card">
+          <div class="cert-badge gov">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="cert-name">SSM Incorporation</div>
+          <div class="cert-no">202501022713 (1624126-V)</div>
+          <div class="cert-expiry">Incorporated <strong>21 May 2025</strong><br>Companies Act 2016</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge mda">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div class="cert-name">MDA Establishment Licence</div>
+          <div class="cert-no">MDA-7072-W124</div>
+          <div class="cert-expiry">Valid until <strong>24 Feb 2028</strong><br>Authorized Representative</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge cidb">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          </div>
+          <div class="cert-name">CIDB Registration</div>
+          <div class="cert-no">Grade G1 · B04 CE21 M15</div>
+          <div class="cert-expiry">Registered Contractor<br>Hulu Langat District</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge lod">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="cert-name">Letter of Distributorship</div>
+          <div class="cert-no">MEDENTAL (M) SDN. BHD</div>
+          <div class="cert-expiry">Barkey products · Issued <strong>14 Apr 2026</strong><br>Valid until April 2028</div>
+        </div>
+      </div>
+
+      <!-- Expiry tracker -->
+      <div class="expiry-tracker reveal">
+        <div class="expiry-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>Document Validity Tracker</h3>
+        </div>
+        <div class="expiry-row">
+          <div class="expiry-doc">MDR Class B — PLASMATHERM</div>
+          <div class="expiry-date">04 Oct 2028</div>
+          <div class="expiry-issuer">Medical Device Authority</div>
+          <span class="expiry-status status-active">Active</span>
+        </div>
+        <div class="expiry-row">
+          <div class="expiry-doc">MDR Class C — BARKEY S-LINE</div>
+          <div class="expiry-date">03 Mar 2029</div>
+          <div class="expiry-issuer">Medical Device Authority</div>
+          <span class="expiry-status status-active">Active</span>
+        </div>
+        <div class="expiry-row">
+          <div class="expiry-doc">MDA Establishment Licence</div>
+          <div class="expiry-date">24 Feb 2028</div>
+          <div class="expiry-issuer">Medical Device Authority</div>
+          <span class="expiry-status status-active">Active</span>
+        </div>
+        <div class="expiry-row">
+          <div class="expiry-doc">Letter of Distributorship (Barkey)</div>
+          <div class="expiry-date">Apr 2028</div>
+          <div class="expiry-issuer">MEDENTAL (M) SDN. BHD</div>
+          <span class="expiry-status status-active">Active</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="reveal">
+          <span class="tag">Why Choose Us</span>
+          <h2 class="why-heading" style="margin-top:16px">
+            Precision You Can<br><em>Trust in the Clinic</em>
+          </h2>
+          <p class="why-text">
+            We combine deep technical expertise in biomedical engineering with full regulatory compliance, giving healthcare institutions the confidence that every device and every maintenance intervention meets the highest standards.
+          </p>
+          <div class="why-items">
+            <div class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="why-item-text"><strong>MDA-registered medical devices</strong> — all Barkey products are fully compliant with Malaysia's Medical Device Act 2012 (Act 737).</div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="why-item-text"><strong>Exclusive Barkey distributor</strong> — direct access to Germany-engineered warming systems used in top hospitals worldwide.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="why-item-text"><strong>AI-powered predictive maintenance</strong> — reduce downtime before failures happen, not after.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="why-item-text"><strong>End-to-end service</strong> — from procurement and commissioning to ongoing maintenance and technical reporting.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="why-item-text"><strong>Registered CIDB contractor</strong> (G1) — qualified for healthcare facility infrastructure and biomedical engineering projects.</div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-panel reveal" style="transition-delay:0.15s">
+          <div class="stat-block">
+            <div class="stat-val">3</div>
+            <div class="stat-lbl">MDR Products</div>
+            <div class="stat-sub">MDA Registered</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-val">2028</div>
+            <div class="stat-lbl">Licence Valid Until</div>
+            <div class="stat-sub">MDA-7072-W124</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-val">G1</div>
+            <div class="stat-lbl">CIDB Grade</div>
+            <div class="stat-sub">B04 · CE21 · M15</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-val">4</div>
+            <div class="stat-lbl">Active Licences</div>
+            <div class="stat-sub">All current</div>
+          </div>
+          <div class="stat-block span2">
+            <div class="stat-val">Semenanjung Malaysia</div>
+            <div class="stat-lbl">Authorized Service Area</div>
+            <div class="stat-sub">Barkey Warming Systems Distribution</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="tag">Get in Touch</span>
+        <h2 class="section-title">Ready to Partner with Us?</h2>
+        <p class="section-sub">Whether you need biomedical maintenance, medical equipment supply, or a technical consultation — our team is ready to help.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="contact-intro">
+            Contact our project consultant directly, or use the form to send us your enquiry. We serve hospitals, clinics, laboratories, and healthcare institutions throughout Semenanjung Malaysia.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Project Consultant</div>
+                <div class="contact-item-value">Mohd Khidir Gazali</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0015.09 17.9l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18.92z"/></svg>
+              </div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Phone / WhatsApp</div>
+                <div class="contact-item-value"><a href="tel:+60123409941">+601-2340 9941</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value">
+                  <a href="mailto:advancetechuniversal@gmail.com">advancetechuniversal@gmail.com</a><br>
+                  <a href="mailto:atteam2025@gmail.com">atteam2025@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Address</div>
+                <div class="contact-item-value">Lot A-G-19, Blok Mawar A<br>Jalan SM 1/1, Selayang Mulia<br>68100 Batu Caves, Selangor Darul Ehsan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal" style="transition-delay:0.15s">
+          <div class="form-title">Send Us an Enquiry</div>
+          <form onsubmit="handleForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fname">First Name</label>
+                <input class="form-input" id="fname" type="text" placeholder="Ahmad" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lname">Last Name</label>
+                <input class="form-input" id="lname" type="text" placeholder="Razali" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="org">Organisation</label>
+              <input class="form-input" id="org" type="text" placeholder="Hospital / Clinic / Institution" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" id="email" type="email" placeholder="you@hospital.gov.my" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">Service Required</label>
+              <select class="form-select" id="service">
+                <option value="">Select a service…</option>
+                <option>Biomedical Maintenance (Preventive / Corrective)</option>
+                <option>Medical Equipment Supply (Barkey)</option>
+                <option>AI Predictive Maintenance</option>
+                <option>Testing &amp; Commissioning</option>
+                <option>MDA Compliance Consultation</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="msg">Message</label>
+              <textarea class="form-textarea" id="msg" placeholder="Briefly describe your requirements…" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send Enquiry →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.jpg" alt="Advancetech Universal logo" />
+          <div class="footer-brand-name">Advancetech Universal Sdn. Bhd.</div>
+          <div class="footer-brand-sub">202501022713 (1624126-V)</div>
+          <div class="footer-desc">
+            Biomedical engineering services, MDA-registered medical equipment supply, and AI-driven healthcare technology solutions for Malaysia's healthcare sector.
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Biomedical Maintenance</a></li>
+            <li><a href="#services">Medical Equipment Supply</a></li>
+            <li><a href="#services">AI Predictive Maintenance</a></li>
+            <li><a href="#services">Testing &amp; Commissioning</a></li>
+            <li><a href="#certifications">MDA Compliance</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="#products">Barkey PLASMATHERM</a></li>
+            <li><a href="#products">Barkey S-LINE</a></li>
+            <li><a href="#products">Barkey WC II-300</a></li>
+          </ul>
+          <div class="footer-col-title" style="margin-top:24px">Compliance</div>
+          <ul class="footer-links">
+            <li><a href="#certifications">MDA Establishment Licence</a></li>
+            <li><a href="#certifications">SSM Registration</a></li>
+            <li><a href="#certifications">CIDB G1</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          &copy; 2025 Advancetech Universal Sdn. Bhd. All rights reserved.
+        </div>
+        <div class="footer-reg">
+          Lot A-G-19, Blok Mawar A, Jalan SM 1/1, Selayang Mulia, 68100 Batu Caves, Selangor
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+        scrollTopBtn.classList.add('show');
+      } else {
+        navbar.classList.remove('scrolled');
+        scrollTopBtn.classList.remove('show');
+      }
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Trigger hero reveals immediately
+    document.querySelectorAll('.hero .reveal').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+
+    // Stagger service/product/cert cards
+    document.querySelectorAll('.service-card, .product-card, .cert-card, .stat-block').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.07) + 's';
+    });
+
+    // Form handler
+    function handleForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = 'Sending…';
+      btn.style.opacity = '0.7';
+      setTimeout(() => {
+        btn.textContent = 'Sent! We\'ll be in touch soon.';
+        btn.style.background = 'linear-gradient(135deg, #4ADE80, #22C55E)';
+        btn.style.opacity = '1';
+        e.target.reset();
+        setTimeout(() => {
+          btn.textContent = 'Send Enquiry →';
+          btn.style.background = '';
+        }, 4000);
+      }, 1000);
+    }
+
+    // Counter animation for stats
+    function animateCounter(el, target, suffix = '') {
+      let start = 0;
+      const duration = 1500;
+      const startTime = performance.now();
+      const isText = isNaN(parseInt(target));
+      if (isText) return;
+      const end = parseInt(target);
+      function update(ts) {
+        const progress = Math.min((ts - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * end) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const val = entry.target.dataset.val;
+          if (val) animateCounter(entry.target, val);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-val').forEach(el => {
+      const raw = el.textContent.trim();
+      if (!isNaN(parseInt(raw))) {
+        el.dataset.val = parseInt(raw);
+        statsObserver.observe(el);
+      }
+    });
+  </script>
+</body>
+</html>
