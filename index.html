@@ -695,6 +695,33 @@
       top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--primary), var(--accent), var(--cyan));
     }
+    .agent-barkey-logo {
+      margin-bottom: 16px;
+    }
+    .agent-barkey-logo img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .origin-barkey-logo {
+      margin-bottom: 14px;
+      display: flex; justify-content: center;
+    }
+    .origin-barkey-logo img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+    .barkey-inline-logo {
+      height: 14px;
+      width: auto;
+      vertical-align: middle;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+      margin-right: 2px;
+    }
     .agent-flag {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--font-display);
@@ -1814,6 +1841,9 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             Official Agent · Semenanjung Malaysia
           </div>
+          <div class="agent-barkey-logo">
+            <img src="assets/barkey-logo.svg" alt="Barkey" />
+          </div>
           <h2 class="agent-title">Your Trusted Source for<br><em>Barkey Warming Systems</em></h2>
           <p class="agent-desc">
             Advancetech Universal is the official appointed agent for <strong>Barkey GmbH &amp; Co. KG</strong> in Semenanjung Malaysia — bringing Germany's leading blood and fluid warming technology directly to Malaysian hospitals, operating theatres, blood banks, and critical care units. Every system is fully registered with the Malaysia Medical Device Authority (MDA) and supported by our in-house biomedical engineering team.
@@ -1839,8 +1869,8 @@
         </div>
         <div class="agent-banner-right">
           <div class="agent-origin-card">
-            <div class="origin-flag-wrap">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <div class="origin-barkey-logo">
+              <img src="assets/barkey-logo.svg" alt="Barkey logo" />
             </div>
             <div class="origin-label">Manufactured by</div>
             <div class="origin-name">Barkey GmbH &amp; Co. KG</div>
@@ -1880,7 +1910,7 @@
             <div>
               <span class="promo-badge class-b">MDR Class B · MDA Registered</span>
               <div class="promo-product-name">plasmatherm</div>
-              <div class="promo-product-brand">Barkey · Germany</div>
+              <div class="promo-product-brand"><img src="assets/barkey-logo.svg" alt="Barkey" class="barkey-inline-logo" /> · Germany</div>
             </div>
           </div>
           <div class="promo-tagline">"Water-free plasma thawing. Zero contamination risk."</div>
@@ -1944,7 +1974,7 @@
             <div>
               <span class="promo-badge class-c">MDR Class C · MDA Registered</span>
               <div class="promo-product-name">S-line</div>
-              <div class="promo-product-brand">Barkey · Germany</div>
+              <div class="promo-product-brand"><img src="assets/barkey-logo.svg" alt="Barkey" class="barkey-inline-logo" /> · Germany</div>
             </div>
           </div>
           <div class="promo-tagline">"Inline warming. Patient-ready in seconds."</div>
@@ -2008,7 +2038,7 @@
             <div>
               <span class="promo-badge class-el">Medical Equipment</span>
               <div class="promo-product-name">warming center II</div>
-              <div class="promo-product-brand">Barkey · Germany</div>
+              <div class="promo-product-brand"><img src="assets/barkey-logo.svg" alt="Barkey" class="barkey-inline-logo" /> · Germany</div>
             </div>
           </div>
           <div class="promo-tagline">"Always ready. Perfectly conditioned."</div>
