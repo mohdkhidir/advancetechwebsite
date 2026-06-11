@@ -504,11 +504,24 @@
       background: var(--dark-surface);
       border: 1px solid var(--border-light);
       border-radius: var(--r-lg);
-      padding: 36px 32px;
-      position: relative;
       overflow: hidden;
+      position: relative;
       cursor: default;
       transition: border-color 0.3s, transform 0.3s;
+    }
+    .service-card-img {
+      width: 100%; height: 180px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.75) saturate(0.6);
+      transition: filter 0.4s, transform 0.4s;
+    }
+    .service-card:hover .service-card-img {
+      filter: brightness(0.85) saturate(0.8);
+      transform: scale(1.03);
+    }
+    .service-card-content {
+      padding: 28px 28px 28px;
     }
     .service-card:hover {
       border-color: var(--border);
@@ -779,13 +792,25 @@
       background: var(--dark-surface);
       border: 1px solid var(--border-light);
       border-radius: var(--r-lg);
-      padding: 32px 28px;
-      display: flex; flex-direction: column; gap: 20px;
+      overflow: hidden;
+      display: flex; flex-direction: column; gap: 0;
       transition: border-color 0.3s, transform 0.3s;
     }
     .promo-card:hover {
       border-color: rgba(0,191,165,0.35);
       transform: translateY(-4px);
+    }
+    .promo-card-img {
+      width: 100%; height: 220px;
+      object-fit: contain;
+      background: #fff;
+      display: block;
+      padding: 16px;
+    }
+    .promo-card-body {
+      padding: 28px;
+      display: flex; flex-direction: column; gap: 20px;
+      flex: 1;
     }
     .promo-card-header {
       display: flex; align-items: flex-start; gap: 16px;
@@ -1431,10 +1456,6 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">
         <img src="assets/logo.jpg" alt="Advancetech Universal logo" />
-        <div class="nav-logo-text">
-          <span>Advancetech Universal</span>
-          <span>Sdn. Bhd.</span>
-        </div>
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -1660,63 +1681,75 @@
       </div>
       <div class="services-grid">
         <div class="service-card reveal" style="transition-delay:0.05s">
-          <div class="service-icon-wrap teal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <div class="service-title">Biomedical Engineering Services</div>
-          <div class="service-desc">
-            Comprehensive maintenance programs for medical equipment across hospitals, clinics, and laboratories — structured to optimize device lifespan, maintain clinical performance, and meet MDA regulatory standards.
-          </div>
-          <div class="service-tags">
-            <span class="s-tag">Preventive Maintenance</span>
-            <span class="s-tag">Corrective Maintenance</span>
-            <span class="s-tag">Calibration Coordination</span>
-            <span class="s-tag">Technical Reporting</span>
+          <img class="service-card-img" src="assets/service-maintenance.jpg" alt="Biomedical engineering maintenance" />
+          <div class="service-card-content">
+            <div class="service-icon-wrap teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="service-title">Biomedical Engineering Services</div>
+            <div class="service-desc">
+              Comprehensive maintenance programs for medical equipment across hospitals, clinics, and laboratories — structured to optimize device lifespan, maintain clinical performance, and meet MDA regulatory standards.
+            </div>
+            <div class="service-tags">
+              <span class="s-tag">Preventive Maintenance</span>
+              <span class="s-tag">Corrective Maintenance</span>
+              <span class="s-tag">Calibration Coordination</span>
+              <span class="s-tag">Technical Reporting</span>
+            </div>
           </div>
         </div>
         <div class="service-card reveal" style="transition-delay:0.1s">
-          <div class="service-icon-wrap cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <div class="service-title">Medical Equipment Supply</div>
-          <div class="service-desc">
-            Authorized distributor of Barkey warming systems — including blood warming, fluid warming, plasma thawing, and warming cabinet solutions. All products are MDA-registered and sourced directly from Germany.
-          </div>
-          <div class="service-tags">
-            <span class="s-tag">Blood Warming</span>
-            <span class="s-tag">Fluid Warming</span>
-            <span class="s-tag">Plasma Thawing</span>
-            <span class="s-tag">MDA Registered</span>
+          <img class="service-card-img" src="assets/service-equipment.jpg" alt="Medical equipment supply" />
+          <div class="service-card-content">
+            <div class="service-icon-wrap cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="service-title">Medical Equipment Supply</div>
+            <div class="service-desc">
+              Official agent for Barkey warming systems — blood warming, fluid warming, plasma thawing, and warming cabinet solutions. All products MDA-registered and sourced directly from Germany.
+            </div>
+            <div class="service-tags">
+              <span class="s-tag">Blood Warming</span>
+              <span class="s-tag">Fluid Warming</span>
+              <span class="s-tag">Plasma Thawing</span>
+              <span class="s-tag">MDA Registered</span>
+            </div>
           </div>
         </div>
         <div class="service-card reveal" style="transition-delay:0.15s">
-          <div class="service-icon-wrap gold">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.071 4.929a10 10 0 010 14.142M4.929 4.929a10 10 0 000 14.142"/><path d="M15.536 8.464a5 5 0 010 7.072M8.464 8.464a5 5 0 000 7.072"/></svg>
-          </div>
-          <div class="service-title">AI Predictive Maintenance</div>
-          <div class="service-desc">
-            Data-driven predictive maintenance strategies using AI analytics to detect equipment failure patterns early, reduce unplanned downtime, and improve the reliability of clinical operations.
-          </div>
-          <div class="service-tags">
-            <span class="s-tag">Predictive Analytics</span>
-            <span class="s-tag">Failure Forecasting</span>
-            <span class="s-tag">Smart Monitoring</span>
-            <span class="s-tag">Cost Reduction</span>
+          <img class="service-card-img" src="assets/service-ai.jpg" alt="AI predictive maintenance" />
+          <div class="service-card-content">
+            <div class="service-icon-wrap gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.071 4.929a10 10 0 010 14.142M4.929 4.929a10 10 0 000 14.142"/><path d="M15.536 8.464a5 5 0 010 7.072M8.464 8.464a5 5 0 000 7.072"/></svg>
+            </div>
+            <div class="service-title">AI Predictive Maintenance</div>
+            <div class="service-desc">
+              Data-driven predictive maintenance strategies using AI analytics to detect equipment failure patterns early, reduce unplanned downtime, and improve the reliability of clinical operations.
+            </div>
+            <div class="service-tags">
+              <span class="s-tag">Predictive Analytics</span>
+              <span class="s-tag">Failure Forecasting</span>
+              <span class="s-tag">Smart Monitoring</span>
+              <span class="s-tag">Cost Reduction</span>
+            </div>
           </div>
         </div>
         <div class="service-card reveal" style="transition-delay:0.2s">
-          <div class="service-icon-wrap green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <div class="service-title">Testing &amp; Commissioning</div>
-          <div class="service-desc">
-            End-to-end installation verification, operational testing, and acceptance activities for new medical equipment deployments. We ensure every device meets clinical and regulatory requirements before going live.
-          </div>
-          <div class="service-tags">
-            <span class="s-tag">Installation Verification</span>
-            <span class="s-tag">Operational Testing</span>
-            <span class="s-tag">MDA Compliance</span>
-            <span class="s-tag">Technical Acceptance</span>
+          <img class="service-card-img" src="assets/service-testing.jpg" alt="Testing and commissioning" />
+          <div class="service-card-content">
+            <div class="service-icon-wrap green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="service-title">Testing &amp; Commissioning</div>
+            <div class="service-desc">
+              End-to-end installation verification, operational testing, and acceptance activities for new medical equipment deployments. We ensure every device meets clinical and regulatory requirements before going live.
+            </div>
+            <div class="service-tags">
+              <span class="s-tag">Installation Verification</span>
+              <span class="s-tag">Operational Testing</span>
+              <span class="s-tag">MDA Compliance</span>
+              <span class="s-tag">Technical Acceptance</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1791,6 +1824,8 @@
 
         <!-- PLASMATHERM -->
         <div class="promo-card reveal" style="transition-delay:0.05s">
+          <img class="promo-card-img" src="assets/plasmatherm2.png" alt="Barkey plasmatherm V" />
+          <div class="promo-card-body">
           <div class="promo-card-header">
             <div class="promo-icon-wrap" style="background:rgba(96,165,250,0.1)">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1848,10 +1883,13 @@
             <span class="use-tag">ICU</span>
           </div>
           <a href="#contact" class="promo-cta">Request a Demo →</a>
+          </div><!-- /promo-card-body -->
         </div>
 
         <!-- S-LINE -->
         <div class="promo-card reveal" style="transition-delay:0.1s">
+          <img class="promo-card-img" src="assets/sline.png" alt="Barkey S-line" />
+          <div class="promo-card-body">
           <div class="promo-card-header">
             <div class="promo-icon-wrap" style="background:rgba(0,191,165,0.1)">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
@@ -1909,10 +1947,13 @@
             <span class="use-tag">Neonatal ICU</span>
           </div>
           <a href="#contact" class="promo-cta">Request a Demo →</a>
+          </div><!-- /promo-card-body -->
         </div>
 
         <!-- WARMING CENTER II -->
         <div class="promo-card reveal" style="transition-delay:0.15s">
+          <img class="promo-card-img" src="assets/warmingcenter.png" alt="Barkey warming center II" />
+          <div class="promo-card-body">
           <div class="promo-card-header">
             <div class="promo-icon-wrap" style="background:rgba(232,201,106,0.1)">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -1970,6 +2011,7 @@
             <span class="use-tag">A&amp;E Department</span>
           </div>
           <a href="#contact" class="promo-cta">Request a Quotation →</a>
+          </div><!-- /promo-card-body -->
         </div>
 
       </div>
@@ -2046,7 +2088,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
           </div>
           <div class="cert-name">Letter of Distributorship</div>
-          <div class="cert-no">MEDENTAL (M) SDN. BHD</div>
+          <div class="cert-no">Official Barkey Agent</div>
           <div class="cert-expiry">Barkey Warming Systems · Semenanjung Malaysia</div>
         </div>
       </div>
